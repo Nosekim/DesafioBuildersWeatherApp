@@ -5,6 +5,7 @@ platform :ios, '11.0'
 install! 'cocoapods', :deterministic_uuids => false
 
 target 'DesafioBuildersWeatherApp' do
+  permissions_path = '../node_modules/react-native-permissions/ios'
   config = use_native_modules!
 
   # Flags change depending on the env values.
@@ -18,6 +19,10 @@ target 'DesafioBuildersWeatherApp' do
     # An absolute path to your application root.
     :app_path => "#{Pod::Config.instance.installation_root}/.."
   )
+
+  pod 'Permission-LocationAccuracy', :path => "#{permissions_path}/LocationAccuracy"
+  pod 'Permission-LocationAlways', :path => "#{permissions_path}/LocationAlways"
+  pod 'Permission-LocationWhenInUse', :path => "#{permissions_path}/LocationWhenInUse"
 
   target 'DesafioBuildersWeatherAppTests' do
     inherit! :complete
