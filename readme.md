@@ -8,21 +8,6 @@ Segue o link do figma (https://www.figma.com/file/CoAPTEbno9agNJi2O3wWIl/Weather
 - ``React Native``
 - ``Typescript``
 
-
-## Imagens
-| iOs  |  Android  |
-| ------------------- | ------------------- |
-|  <img src="https://i.imgur.com/wswxdYi.jpeg" width="180"> |  <img src="https://i.imgur.com/9tAR9Ak.png" width="180"> |
-
-
-
-## TODO:
-
-- [ ] Adicionar temas (dark/light)
-- [ ] Adicionar Icone para o app
-- [ ] TDD
-- [ ] Tests E2E
-
 ## Objetivos:
 
 🎯 Desenvolva um aplicativo que consuma a localização atual do usuário e exiba na interface o endereço atual os dados climáticos da região e um botão para atualizar os dados.
@@ -49,3 +34,32 @@ Segue o link do figma (https://www.figma.com/file/CoAPTEbno9agNJi2O3wWIl/Weather
 - Documentação
 - Interface
 - Testes
+
+## Imagens
+| iOs  |  Android  |
+| ------------------- | ------------------- |
+|  <img src="https://i.imgur.com/wswxdYi.jpeg" width="180"> |  <img src="https://i.imgur.com/3lPuHcS.png" width="180"> |
+
+## Testar o projeto
+
+- Foi utilizada a API do OpenWeather, você precisa de uma API Key, basta se cadastrar aqui (https://home.openweathermap.org/api_keys).
+- Também foi utilizada uma API para transformar coordenadas em endereço, cadastre-se para conseguir uma API KEY aqui (https://my.locationiq.com/)
+- Após o cadastro você deve criar um arquivo .env na raíz do projeto com a seguinte estrutura:
+```
+WEATHER_API_KEY=sua_key_aqui
+REVERSE_GEOCODE_APIKEY=sua_key_aqui
+```
+- Instalar as dependências do projeto
+
+|         Com Yarn    |      Com Npm         |
+|---------------------|----------------------|
+|```yarn install```   |```npm install ```    |
+
+
+
+## TODO:
+
+- [ ] Adicionar temas (dark/light)
+- [ ] Adicionar Icone para o app
+- [ ] TDD
+- [ ] Tests E2E
