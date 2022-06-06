@@ -1,5 +1,6 @@
 import { Platform, Alert } from 'react-native';
 import Geolocation from '@react-native-community/geolocation';
+import { REVERSE_GEOCODE_APIKEY, WEATHER_API_KEY } from "@env";
 
 import { requestAndroidLocationPermission, requestIOSLocationPermission } from './../../utils/locationPermissions';
 
@@ -44,9 +45,9 @@ const requestLocationPermission = async () => {
 
 const getWeatherData = async (coords: CoordsType) => {
   const { latitude, longitude } = coords;
-  const urlOnecall = `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&units=metric&exclude=minutely,alerts&appid=bdd25db9e056dcbc05e3ff71a7c99bc2`;
-  const daily = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&exclude=hourly,daily&appid=bdd25db9e056dcbc05e3ff71a7c99bc2`;
-  const getCityUrl = `https://us1.locationiq.com/v1/reverse.php?key=pk.df82c9b5009512056edaf9459c447d7b&lat=${latitude}&lon=${longitude}&format=json`;
+  const urlOnecall = `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&units=metric&exclude=minutely,alerts&appid=${WEATHER_API_KEY}`;
+  const daily = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&exclude=hourly,daily&appid=${WEATHER_API_KEY}`;
+  const getCityUrl = `https://us1.locationiq.com/v1/reverse.php?key=${REVERSE_GEOCODE_APIKEY}&lat=${latitude}&lon=${longitude}&format=json`;
 
   const currentResult = await fetch(daily)
     .then(result => result.json())

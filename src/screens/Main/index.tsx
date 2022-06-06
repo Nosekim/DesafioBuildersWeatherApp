@@ -35,6 +35,7 @@ export default function Main() {
   useEffect(() => {
     (async () => {
       if (coords.latitude !== 0 && coords.longitude !== 0) {
+        setLoading(true);
         await getWeatherData(coords)
           .then((wd: ParsedDataType) => {
             const { city, current, hourly, daily } = wd;
