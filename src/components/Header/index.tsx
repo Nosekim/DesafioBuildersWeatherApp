@@ -3,11 +3,21 @@ import React, { useState } from 'react';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { translateCondition } from './../../utils/weather.utils';
 import styles from './styles';
+import { WeatherItem } from '../../utils/types';
 
-export default function Header(props: any) {
-  const { cityName, temp, min, max, weather } = props;
+interface Props {
+  cityName: string;
+  temp: number;
+  min: number;
+  max: number;
+  updateCoords: () => void;
+  weather: WeatherItem[];
+}
+
+export default function Header(props: Props) {
+  const { cityName, temp, min, max, weather, updateCoords } = props;
   const [wt] = weather;
-  const { main, description, icon } = wt;
+  const { description, icon } = wt;
   const iconUrl = `https://openweathermap.org/img/wn/${icon}@2x.png`;
   const condition = translateCondition(description);
 
@@ -25,7 +35,9 @@ export default function Header(props: any) {
           <Text style={styles.minmax}>
             {`Max.: ${Math.floor(max)}º Mín.: ${Math.floor(min)}º`}
           </Text>
-          <TouchableOpacity style={{padding: 10}}>
+          <TouchableOpacity
+            onPress={updateCoords}
+            style={{ padding: 10 }}>
             <Ionicons name="reload" size={26} color="black" />
           </TouchableOpacity>
         </View>

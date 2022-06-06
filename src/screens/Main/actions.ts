@@ -1,8 +1,5 @@
 import { Platform } from 'react-native';
-import Geolocation, { GeoPosition } from 'react-native-geolocation-service';
-import GetLocation from 'react-native-get-location';
-import produce from 'immer';
-//import Geolocation from '@react-native-community/geolocation';
+import Geolocation from '@react-native-community/geolocation';
 
 import { requestAndroidLocationPermission, requestIOSLocationPermission } from './../../utils/locationPermissions';
 
@@ -15,7 +12,9 @@ const requestLocationRNCommunityGeolocation = async (setLocation: any, setLoadin
   setLoading(true);
   Geolocation.getCurrentPosition(
     info => {
-      setLocation(info);
+      const { coords } = info;
+      const { longitude, latitude } = coords;
+      setLocation({ latitude, longitude });
       setLoading(false);
     },
     error => {
@@ -25,21 +24,6 @@ const requestLocationRNCommunityGeolocation = async (setLocation: any, setLoadin
   );
 };
 
-const requestLocationRNGeolocationService = async (setLocation: any, setLoading: any) => {
-  setLoading(true);
-  Geolocation.getCurrentPosition(
-    (position) => {
-      setLocation(position);
-      setLoading(false);
-    },
-    (error) => {
-      // See error code charts below.
-      console.log(error.code, error.message);
-      setLoading(false);
-    },
-    { enableHighAccuracy: true, timeout: 15000, maximumAge: 10000 }
-  );
-}
 const requestLocationPermission = async () => {
   if (Platform.OS === "android") {
     const permission = await requestAndroidLocationPermission();
@@ -49,23 +33,6 @@ const requestLocationPermission = async () => {
     return permission;
   }
 };
-
-const requestLocationRNGetLocation = async (setLocation: any, setLoading: any) => {
-  setLoading(true);
-  GetLocation.getCurrentPosition({
-    enableHighAccuracy: true,
-    timeout: 15000,
-  })
-    .then(location => {
-      setLocation(location);
-      setLoading(false);
-    })
-    .catch(error => {
-      const { code, message } = error;
-      console.warn(code, message);
-      setLoading(false);
-    })
-}
 
 const requestLocation = async (fn: Function) => {
   try {
@@ -80,18 +47,6 @@ const requestLocation = async (fn: Function) => {
     );
   } catch (error) {
     return undefined;
-  }
-};
-
-const updateLocation = async (setCoords: (coords: CoordsType) => void, setLoading: (v: boolean) => void) => {
-  setLoading(true);
-  const permission = await requestLocationPermission();
-  const { granted, requestable } = permission;
-  if (granted) {
-    await requestLocation((position: GeoPosition) => {
-      const { coords: { latitude, longitude } } = position;
-      setCoords({ latitude, longitude });
-    });
   }
 };
 
@@ -143,19 +98,23 @@ const getWeatherData = async (coords: CoordsType) => {
       reject(error);
     };
   });
+
   const solvedPromise = await Promise.all([currentPromise, onecallPromise, getCityPromise])
     .then(result => {
 
-      const [current, onecall, getCity]:any = result;
+      const [current, onecall, getCity]: any = result;
       let newResult = {
         ...onecall,
         current: current,
         city: getCity
       };
       return newResult;
-    });
+    })
+    .catch(error => {
+      throw error;
+    })
 
   return solvedPromise;
 }
 
-export { updateLocation, getWeatherData, requestLocationRNCommunityGeolocation, requestLocationRNGetLocation, requestLocationRNGeolocationService };
+export { getWeatherData, requestLocationRNCommunityGeolocation };
