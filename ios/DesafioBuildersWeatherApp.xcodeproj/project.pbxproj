@@ -14,6 +14,11 @@
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		7699B88040F8A987B510C191 /* libPods-DesafioBuildersWeatherApp-DesafioBuildersWeatherAppTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-DesafioBuildersWeatherApp-DesafioBuildersWeatherAppTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		DD2242D50AE44DAC9E725D82 /* Jura-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3FABB02395014B438A3A01A5 /* Jura-Bold.ttf */; };
+		91B5E4F002094BBBB8B65FDC /* Jura-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3CBC9553810847D789756B8D /* Jura-Light.ttf */; };
+		DD06A59A69704590AE5F2E11 /* Jura-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A8D521C4EA6F41B89315E489 /* Jura-Medium.ttf */; };
+		A01308A6101542419DEB22BA /* Jura-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4EF8C3398B0B45E2A6F3105E /* Jura-Regular.ttf */; };
+		C1DD7A4533BD4E18A18DAC80 /* Jura-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BC17131AE77441C0878B9DEE /* Jura-SemiBold.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +65,11 @@
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		F4ABA236BAF5430F9AC16C8C /* FontAwesome.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome.ttf"; sourceTree = "<group>"; };
 		FBBDEB8BBCA74565803C960D /* AntDesign.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = AntDesign.ttf; path = "../node_modules/react-native-vector-icons/Fonts/AntDesign.ttf"; sourceTree = "<group>"; };
+		3FABB02395014B438A3A01A5 /* Jura-Bold.ttf */ = {isa = PBXFileReference; name = "Jura-Bold.ttf"; path = "../src/assets/fonts/Jura-Bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		3CBC9553810847D789756B8D /* Jura-Light.ttf */ = {isa = PBXFileReference; name = "Jura-Light.ttf"; path = "../src/assets/fonts/Jura-Light.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		A8D521C4EA6F41B89315E489 /* Jura-Medium.ttf */ = {isa = PBXFileReference; name = "Jura-Medium.ttf"; path = "../src/assets/fonts/Jura-Medium.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		4EF8C3398B0B45E2A6F3105E /* Jura-Regular.ttf */ = {isa = PBXFileReference; name = "Jura-Regular.ttf"; path = "../src/assets/fonts/Jura-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		BC17131AE77441C0878B9DEE /* Jura-SemiBold.ttf */ = {isa = PBXFileReference; name = "Jura-SemiBold.ttf"; path = "../src/assets/fonts/Jura-SemiBold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,6 +141,11 @@
 				0AD9C8D085C84D4E89FF0411 /* Octicons.ttf */,
 				3B0F61635D6943CA8276A315 /* SimpleLineIcons.ttf */,
 				D153ADA657744A88B63F4C6F /* Zocial.ttf */,
+				3FABB02395014B438A3A01A5 /* Jura-Bold.ttf */,
+				3CBC9553810847D789756B8D /* Jura-Light.ttf */,
+				A8D521C4EA6F41B89315E489 /* Jura-Medium.ttf */,
+				4EF8C3398B0B45E2A6F3105E /* Jura-Regular.ttf */,
+				BC17131AE77441C0878B9DEE /* Jura-SemiBold.ttf */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -284,6 +299,11 @@
 			files = (
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				DD2242D50AE44DAC9E725D82 /* Jura-Bold.ttf in Resources */,
+				91B5E4F002094BBBB8B65FDC /* Jura-Light.ttf in Resources */,
+				DD06A59A69704590AE5F2E11 /* Jura-Medium.ttf in Resources */,
+				A01308A6101542419DEB22BA /* Jura-Regular.ttf in Resources */,
+				C1DD7A4533BD4E18A18DAC80 /* Jura-SemiBold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

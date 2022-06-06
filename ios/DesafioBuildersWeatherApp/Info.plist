@@ -73,6 +73,11 @@
 		<string>Octicons.ttf</string>
 		<string>SimpleLineIcons.ttf</string>
 		<string>Zocial.ttf</string>
+		<string>Jura-Bold.ttf</string>
+		<string>Jura-Light.ttf</string>
+		<string>Jura-Medium.ttf</string>
+		<string>Jura-Regular.ttf</string>
+		<string>Jura-SemiBold.ttf</string>
 	</array>
 </dict>
 </plist>
