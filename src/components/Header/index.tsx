@@ -1,5 +1,6 @@
-import { View, Text, Image } from 'react-native';
+import { View, Text, Image, TouchableOpacity } from 'react-native';
 import React, { useState } from 'react';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 import { translateCondition } from './../../utils/weather.utils';
 import styles from './styles';
 
@@ -24,6 +25,9 @@ export default function Header(props: any) {
           <Text style={styles.minmax}>
             {`Max.: ${Math.floor(max)}º Mín.: ${Math.floor(min)}º`}
           </Text>
+          <TouchableOpacity style={{padding: 10}}>
+            <Ionicons name="reload" size={26} color="black" />
+          </TouchableOpacity>
         </View>
         <View style={styles.rightContent}>
           <View style={styles.cardRightContent} onLayout={(event) => {

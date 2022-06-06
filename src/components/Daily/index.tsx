@@ -19,8 +19,8 @@ const Item = ({ item }: ItemProps) => {
   const { min, max } = temp;
   const { icon } = weather[0];
   const iconUrl = `https://openweathermap.org/img/wn/${icon}@2x.png`;
-
   const dateTime = dayjs(dt * 1000);
+  
   return (
     <View style={styles.itemContainer}>
       <View style={{ display: 'flex', width: 60 }}>
