@@ -63,11 +63,12 @@ const styles = StyleSheet.create({
   },
   cityName: {
     fontFamily: "Jura-Regular",
-    fontSize: 32
+    fontSize: 32,
   },
   temperature: {
     fontFamily: "Jura-Regular",
-    fontSize: 84
+    fontSize: 72,
+    textAlign: 'center'
   },
   minmax: {
     fontFamily: "Jura-Regular",

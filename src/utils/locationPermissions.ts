@@ -65,7 +65,6 @@ export const requestIOSLocationPermission = async () => {
     }
   })
     .catch(error => {
-      console.log(error)
       return { granted: false, requestable: false }
     })
 }
@@ -90,16 +89,6 @@ export const requestAndroidLocationPermission = async () => {
       return { granted: false, requestable: false }
     })
 }
-
-const requestLocationPermission = async () => {
-  if (Platform.OS === "android") {
-    const permission = await requestAndroidLocationPermission();
-    return permission;
-  } else {
-    const permission = await requestIOSLocationPermission();
-    return permission;
-  }
-};
 
 const checkLocationPermissionAndroid = async () => {
   const havePermission = await PermissionsAndroid.check(PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION)

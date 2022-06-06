@@ -1,4 +1,4 @@
-import { View, ScrollView, Alert } from 'react-native';
+import { View, ScrollView, Alert, StatusBar } from 'react-native';
 import React, { useEffect, useState } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
@@ -47,8 +47,8 @@ export default function Main() {
             setTemp(temp);
             setTempMin(temp_min);
             setTempMax(temp_max);
-            const { address: { town } } = city;
-            setTown(town);
+            const { address: { town, city: cityName } } = city;
+            setTown(cityName ?? town);
             setErrorLoading(false);
           })
           .catch((err) => {
@@ -66,11 +66,16 @@ export default function Main() {
   };
 
   if (errorLoading) {
-    return <ErrorPage updateCoords={updateCoords}/>
+    return <ErrorPage updateCoords={updateCoords} />
   }
 
   return (
     <SafeAreaView style={styles.safeArea}>
+      <StatusBar
+        animated={true}
+        barStyle="dark-content"
+        backgroundColor={'#fff'}
+      />
       <ScrollView>
         <View style={styles.content}>
           {weather && <Header cityName={town} temp={temp} min={tempMin} max={tempMax} weather={weather} updateCoords={updateCoords} />}

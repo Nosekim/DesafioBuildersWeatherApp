@@ -1,5 +1,6 @@
 import { Platform, Alert } from 'react-native';
-import Geolocation from '@react-native-community/geolocation';
+//import Geolocation from '@react-native-community/geolocation';
+import Geolocation from 'react-native-geolocation-service';
 import { REVERSE_GEOCODE_APIKEY, WEATHER_API_KEY } from "@env";
 
 import { requestAndroidLocationPermission, requestIOSLocationPermission } from './../../utils/locationPermissions';

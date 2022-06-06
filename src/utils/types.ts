@@ -108,6 +108,7 @@ export type CityType = {
   lon: string;
   display_name: string;
   address: {
+    city?: string;
     road: string;
     suburb: string;
     town: string;
