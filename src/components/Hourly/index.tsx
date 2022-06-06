@@ -29,9 +29,8 @@ const Item = ({ item }: ItemProps) => {
   )
 };
 
-export default function Hourly(props: Props) {
-  const { data } = props;
-
+export default function Hourly({ data }: Props) {
+  
   const renderItem = (item: HourlyType) => {
     return (
       <Item item={item} />
