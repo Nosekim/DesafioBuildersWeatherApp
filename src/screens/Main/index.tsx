@@ -24,7 +24,7 @@ export default function Main() {
   const [town, setTown] = useState<string>("");
   const [errorLoading, setErrorLoading] = useState<boolean>(false);
 
-  const updateCoords = () => requestLocationRNCommunityGeolocation(setCoords, setLoading);//updateLocation(setCoords, setLoading);
+  const updateCoords = () => requestLocationRNCommunityGeolocation(setCoords, setLoading, setErrorLoading);
 
   useEffect(() => {
     (async () => {

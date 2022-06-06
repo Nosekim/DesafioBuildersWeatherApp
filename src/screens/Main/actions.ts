@@ -1,4 +1,4 @@
-import { Platform } from 'react-native';
+import { Platform, Alert } from 'react-native';
 import Geolocation from '@react-native-community/geolocation';
 
 import { requestAndroidLocationPermission, requestIOSLocationPermission } from './../../utils/locationPermissions';
@@ -8,20 +8,28 @@ export type CoordsType = {
   longitude: number;
 }
 
-const requestLocationRNCommunityGeolocation = async (setLocation: any, setLoading: any) => {
+const requestLocationRNCommunityGeolocation = async (setLocation: React.Dispatch<React.SetStateAction<CoordsType>>, setLoading: React.Dispatch<React.SetStateAction<boolean>>, setError: React.Dispatch<React.SetStateAction<boolean>>) => {
   setLoading(true);
-  Geolocation.getCurrentPosition(
-    info => {
-      const { coords } = info;
-      const { longitude, latitude } = coords;
-      setLocation({ latitude, longitude });
-      setLoading(false);
-    },
-    error => {
-      console.log(error);
-      setLoading(false);
-    }
-  );
+  const permission = await requestLocationPermission();
+  if (permission.granted) {
+    Geolocation.getCurrentPosition(
+      info => {
+        const { coords } = info;
+        const { longitude, latitude } = coords;
+        setLocation({ latitude, longitude });
+        setLoading(false);
+      },
+      error => {
+        console.log(error);
+        setLoading(false);
+        setError(true);
+      }
+    );
+  } else {
+    setLoading(false);
+    setError(true);
+    Alert.alert("A localização foi desabilitada e não pode ser solicitada novamente, por favor, vá em configurações e habilite a localização para o aplicativo.");
+  }
 };
 
 const requestLocationPermission = async () => {
@@ -31,22 +39,6 @@ const requestLocationPermission = async () => {
   } else {
     const permission = await requestIOSLocationPermission();
     return permission;
-  }
-};
-
-const requestLocation = async (fn: Function) => {
-  try {
-    Geolocation.getCurrentPosition(
-      (position) => {
-        fn(position);
-      },
-      (error) => {
-        throw error;
-      },
-      { enableHighAccuracy: true, timeout: 15000, maximumAge: 10000 }
-    );
-  } catch (error) {
-    return undefined;
   }
 };
 
