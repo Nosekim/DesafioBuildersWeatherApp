@@ -2,8 +2,17 @@ import { View, Text, FlatList, Image } from 'react-native';
 import React from 'react';
 import dayjs from 'dayjs';
 import styles from './styles';
+import EvilIcons from 'react-native-vector-icons/EvilIcons';
+import { HourlyType } from './../../utils/types';
 
-const Item = ({ item }: any) => {
+interface Props {
+  data: HourlyType[];
+};
+interface ItemProps {
+  item: HourlyType;
+};
+
+const Item = ({ item }: ItemProps) => {
   const { dt, weather, temp } = item;
   const { icon } = weather[0];
   const iconUrl = `https://openweathermap.org/img/wn/${icon}@2x.png`;
@@ -20,18 +29,10 @@ const Item = ({ item }: any) => {
   )
 };
 
-export default function Hourly(props: any) {
-  const hr = {
-    "dt": 1654459200,
-    "temp": 17.64,
-    "feels_like": 17.97, "pressure": 1019, "humidity": 96,
-    "dew_point": 16.99, "uvi": 0.14, "clouds": 61, "visibility": 10000, "wind_speed": 0.51, "wind_deg": 77, "wind_gust": 0.58,
-    "weather": [{ "id": 803, "main": "Clouds", "description": "broken clouds", "icon": "04d" }],
-    "pop": 0.18
-  }
+export default function Hourly(props: Props) {
   const { data } = props;
 
-  const renderItem = ({ item }: any) => {
+  const renderItem = (item: HourlyType) => {
     return (
       <Item item={item} />
     )
@@ -41,15 +42,16 @@ export default function Hourly(props: any) {
     <View style={styles.container}>
       <View style={styles.content}>
         <View style={styles.textContainer}>
+          <EvilIcons name="clock" color="black" size={26} />
           <Text style={styles.tempText}>{`Condições das próximas horas`}</Text>
         </View>
-
         <View style={styles.separator}></View>
         <FlatList
-          data={data.slice(0,12)}
-          renderItem={renderItem}
-          keyExtractor={item => item.dt}
+          data={data.slice(0, 12)}
+          renderItem={({ item }: ItemProps) => renderItem(item)}
+          keyExtractor={item => '' + item.dt}
           horizontal={true}
+          showsHorizontalScrollIndicator={false}
         />
       </View>
     </View>
